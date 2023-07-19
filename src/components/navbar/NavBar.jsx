@@ -3,6 +3,7 @@ para renderizar a pagina do lado clientte*/
 
 import React from 'react'
 import Link from 'next/link'
+import styles from './page.module.css'
 
 const links = [
     {
@@ -39,15 +40,20 @@ const links = [
 
 const NavBar = () => {
     return (
-        <div>
-            <Link href='/'>lamamia</Link>
-            <div>
+        <div className={styles.container}>
+            <Link href='/' className={styles.logo}>EGADesign</Link>
+            <div className={styles.links}>
                 {
                     links.map(({ id, title, url }) => (
-                        <Link key={id} href={url}>{title}</Link>
+                        <Link key={id} href={url} className={styles.link}>{title}</Link>
                     ))
                 }
-                <button onClick={() => { console.log('logged out') }}>Logout</button>
+                <button className={styles.logout}
+                    onClick={() => {
+                        console.log('logged out')
+                    }}
+                >Logout
+                </button>
             </div>
         </div>
     )
